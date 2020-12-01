@@ -13,16 +13,16 @@ import std.core;
         int result = -1;
         std::vector<int> values;
 
-        for (size_t i = 0; i < arr.size(); ++i)
+        for (auto i : arr)
         {
-            auto x = std::find(values.begin(), values.end(), sum - arr[i]);
+            auto x = std::find(values.begin(), values.end(), sum - i);
             if (x != values.end())
             {
-                result = *x * arr[i];
+                result = (*x) * i;
                 break;
             }
 
-            values.push_back(arr[i]);
+            values.push_back(i);
         }
 
         return result;
