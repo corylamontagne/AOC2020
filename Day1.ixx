@@ -39,7 +39,7 @@ import std.core;
         std::sort(arr.begin(), arr.end());
 
         //no need to parse > sum
-        auto it = std::remove_if(arr.begin(), arr.end(), [](int n) { return n > sum; });
+        auto it = std::remove_if(arr.begin(), arr.end(), [sum](int n) { return n > sum; });
         arr.erase(it, arr.end());
 
         size_t arrSize = arr.size();
