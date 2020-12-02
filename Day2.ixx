@@ -42,12 +42,10 @@ namespace Day2
     /// </summary>
     export bool ValidatePosition(PasswordRule rule)
     {
-        int low = std::get<0>(rule);
-        int high = std::get<1>(rule);
         char value = std::get<2>(rule);
         std::string pw = std::get<3>(rule);
 
-        return ( (pw[low-1] == value) ^ (pw[high-1] == value));
+        return ( (pw[std::get<0>(rule) -1] == value) ^ (pw[std::get<1>(rule) -1] == value));
     }
 
     /// <summary>
