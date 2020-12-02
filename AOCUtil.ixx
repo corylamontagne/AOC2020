@@ -18,4 +18,17 @@ export namespace AOC
 
         return input;
     }
+
+    std::vector<std::string> ParseFileByLine(const std::string& file)
+    {
+        std::vector<std::string> input;
+        std::ifstream is(file);
+
+        std::string line;
+        while (std::getline(is, line))
+        { 
+            input.push_back(line);
+        }
+        return input;
+    }
 }

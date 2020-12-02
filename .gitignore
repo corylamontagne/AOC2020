@@ -57,11 +57,5 @@ Debug/.obj.dt.md.json.command
 *.command
 *.tlog
 *.ifc
-Debug/AOCUtil.ixx.ifc.d.json
-Debug/AOCUtil.ixx.ifc.dt.d.json
-Debug/AOCUtil.ixx.ifc.dt.md.json
-Debug/aocutil.ixx.module.json
-Debug/Day1.ixx.ifc.d.json
-Debug/Day1.ixx.ifc.dt.d.json
-Debug/Day1.ixx.ifc.dt.md.json
-Debug/day1.ixx.module.json
+*.json
+*.enc
