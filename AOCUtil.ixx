@@ -31,4 +31,11 @@ export namespace AOC
         }
         return input;
     }
+
+    std::string ReplicateString(std::string s,  int n) {
+        std::ostringstream os;
+        for (int i = 0; i < n; i++)
+            os << s;
+        return os.str();
+    }
 }
