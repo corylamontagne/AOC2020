@@ -32,10 +32,29 @@ export namespace AOC
         return input;
     }
 
-    std::string ReplicateString(std::string s,  int n) {
+    std::string ReplicateString(std::string s,  unsigned int n) {
         std::ostringstream os;
-        for (int i = 0; i < n; i++)
+        for (unsigned int i = 0; i < n; i++)
             os << s;
         return os.str();
+    }
+
+    std::map<int, std::vector<std::string>> GroupParsedFileByTokens(std::vector<std::string> parsedFile, std::vector<char> tokens, bool tokenizeEmptyLines)
+    {
+        std::map<int, std::vector<std::string>> output;
+
+        unsigned int i = 0;
+        for (auto line : parsedFile)
+        {
+            if (line.empty())
+            {
+                i++;
+                continue;
+            }
+            std::stringstream ss(line);
+            std::copy(std::istream_iterator<std::string>{ss}, std::istream_iterator<std::string>{}, std::back_inserter(output[i]));
+        }
+
+        return output;
     }
 }
