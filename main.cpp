@@ -13,8 +13,7 @@ int main()
     auto startTime = std::chrono::high_resolution_clock::now();
 
     //Day 4 //
-    std::vector<std::string> input = AOC::ParseFileByLine("Input/P4-input.txt");
-    std::map<int, std::vector<std::string>> data = AOC::GroupParsedFileByTokens(input, std::vector<char>{' '}, true);
+    std::map<int, std::vector<std::string>> data = AOC::GroupParsedFileByTokens(AOC::ParseFileByLine("Input/P4-input.txt"), std::vector<char>{' '}, true);
 
     //Problem 1
     std::map<std::string, std::string> requiredFields{  {"byr", ""},
@@ -34,7 +33,7 @@ int main()
                         {"hgt", "^((1([5-8][0-9]|9[0-3]))cm|(59|6[0-9]|7[0-6])in)"},
                         {"hcl", "#[0-9a-f]{6}"},
                         {"ecl", "amb|blu|brn|gr[yn]|hzl|oth"},
-                        {"pid", "[0-9]{9}"} };
+                        {"pid", "^[0-9]{9}$"} };
 
     std::cout << Day4::CountValidPassports(data, requiredFields, true) << std::endl;
 
