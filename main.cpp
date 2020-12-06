@@ -22,7 +22,7 @@ int main()
     std::cout << Day6::GetAnsweredQuestions(answers) << std::endl;
 
     //Problem 2
-    std::cout << Day6::GetUniqueDataFromLists(data) << std::endl;
+    std::cout << Day6::GetUnanimousAnswers(data) << std::endl;
 
     //Day 5 //
     //std::vector<std::string> input = AOC::ParseFileByLine("Input/P5-input.txt");

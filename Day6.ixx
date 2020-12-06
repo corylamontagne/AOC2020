@@ -17,7 +17,7 @@ namespace Day6
     }
 
     //this function is similar to one in AOCUtils, maybe find a way to make generic to be used for all cases
-    export unsigned int GetUniqueDataFromLists(std::map<int, std::vector<std::string>> input)
+    export unsigned int GetUnanimousAnswers(std::map<int, std::vector<std::string>> input)
     {
         unsigned int results = 0;
 
