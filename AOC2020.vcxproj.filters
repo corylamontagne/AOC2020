@@ -36,5 +36,8 @@
     <ClCompile Include="Day5.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Day6.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

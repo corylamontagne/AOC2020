@@ -57,4 +57,19 @@ export namespace AOC
 
         return output;
     }
+
+    std::map<int, std::unordered_set<char>> GetUniqueDataFromLists(std::map<int, std::vector<std::string>> input)
+    {
+        std::map<int, std::unordered_set<char>> uniqueData;
+
+        for (auto pp : input)
+        {
+            for (auto data : pp.second)
+            {
+                std::for_each(data.begin(), data.end(), [pp, &uniqueData](char const& c) {uniqueData[pp.first].insert(c); });
+            }
+        }
+
+        return uniqueData;
+    }
 }
