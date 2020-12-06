@@ -34,7 +34,6 @@ namespace Day5
             });
             seatNumbers.push_back((low) * seatsPerRow + (lowSeat));
         }
-        std::sort(seatNumbers.begin(), seatNumbers.end());
 
         return seatNumbers;
     }
