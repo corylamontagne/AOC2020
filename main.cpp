@@ -7,22 +7,35 @@ import Day3;
 import Day4;
 import Day5;
 import Day6;
+import Day7;
 
 int main()
 {
     //Start Timer Code
     auto startTime = std::chrono::high_resolution_clock::now();
 
-    //Day 6 //
-    std::map<int, std::vector<std::string>> data = AOC::GroupParsedFileByTokens(AOC::ParseFileByLine("Input/P6-input.txt"), std::vector<char>{' '}, true);
+    //Day 7 //
+    std::vector<std::string> input = AOC::ParseFileByLine("Input/P7-input.txt");
+    std::string bagToCheck = "shiny gold";
 
-    std::map<int, std::unordered_set<char>> answers = AOC::GetUniqueDataFromLists(data);
+    Day7::MatryoshkaBags mb = Day7::GetMatryoshkaBags(input, bagToCheck);
+    //Problem 1
+    std::cout << Day7::GetNumberOfParents(mb, bagToCheck) << std::endl;
 
     //Problem 1
-    std::cout << Day6::GetAnsweredQuestions(answers) << std::endl;
+    std::cout << Day7::GetNumberOfBagsToContain(mb, bagToCheck) << std::endl;
 
-    //Problem 2
-    std::cout << Day6::GetUnanimousAnswers(data) << std::endl;
+
+    //Day 6 //
+    //std::map<int, std::vector<std::string>> data = AOC::GroupParsedFileByTokens(AOC::ParseFileByLine("Input/P6-input.txt"), std::vector<char>{' '}, true);
+
+    //std::map<int, std::unordered_set<char>> answers = AOC::GetUniqueDataFromLists(data);
+
+    ////Problem 1
+    //std::cout << Day6::GetAnsweredQuestions(answers) << std::endl;
+
+    ////Problem 2
+    //std::cout << Day6::GetUnanimousAnswers(data) << std::endl;
 
     //Day 5 //
     //std::vector<std::string> input = AOC::ParseFileByLine("Input/P5-input.txt");
