@@ -72,4 +72,17 @@ export namespace AOC
 
         return uniqueData;
     }
+
+    std::vector<std::tuple<std::string, int>> SplitInputIntoPairs(std::vector<std::string> input)
+    {
+        std::vector<std::tuple<std::string, int>> returnData;
+
+        for (auto i : input)
+        {
+            size_t pos = i.find(' ');
+            returnData.push_back({ i.substr(0, pos), stoi(i.substr(pos + 1)) });
+        }
+
+        return returnData;
+    }
 }
