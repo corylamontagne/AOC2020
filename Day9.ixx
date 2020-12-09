@@ -34,7 +34,11 @@ namespace Day9
         {
             long long val = input[i];
             //check our sums
-            if (std::find(sums.begin(), sums.end(), val) == sums.end()) { return val; }
+            if (std::find(sums.begin(), sums.end(), val) == sums.end()) 
+            { 
+                result = val;
+                break;
+            }
 
             //remove values related to the 1st of the preamble so we can add the next.
             preambleList.pop_front();
@@ -68,7 +72,8 @@ namespace Day9
             {
                 std::vector<long long> weakSet{ input.begin() + i, input.begin() + (j - 1) };
                 std::sort(weakSet.begin(), weakSet.end());
-                return weakSet.front() + weakSet.back();
+                result = weakSet.front() + weakSet.back();
+                break;
             }
         }
 
