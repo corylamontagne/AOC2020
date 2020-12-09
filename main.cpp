@@ -9,22 +9,33 @@ import Day5;
 import Day6;
 import Day7;
 import Day8;
+import Day9;
 
 int main()
 {
     //Start Timer Code
     auto startTime = std::chrono::high_resolution_clock::now();
 
-    //Day 8 //
-    std::vector<Day8::CommandValue> input = AOC::SplitInputIntoPairs(AOC::ParseFileByLine("Input/P8-input.txt"));
+    //Day 9 //
+    Day9::LongLongVec input = AOC::ConvertInputToLongs(AOC::ParseFileByLine("Input/P9-input.txt"));
 
+    long long invalidPreamble = Day9::FindFirstFailedPreambles(input, 25);
     //Problem 1
-    auto [result, success] = Day8::ProcessInput(input);
-    std::cout << result << std::endl;
+    std::cout << invalidPreamble << std::endl;
 
     //Problem 2
-    auto [r, s] = Day8::FindSwappedCommand(input, { { "jmp", "nop" }, { "nop", "jmp" } });
-    std::cout << r << std::endl;
+    std::cout << Day9::FindEncryptionWeakness(input, invalidPreamble) << std::endl;
+
+    //Day 8 //
+    //std::vector<Day8::CommandValue> input = AOC::SplitInputIntoPairs(AOC::ParseFileByLine("Input/P8-input.txt"));
+
+    ////Problem 1
+    //auto [result, success] = Day8::ProcessInput(input);
+    //std::cout << result << std::endl;
+
+    ////Problem 2
+    //auto [r, s] = Day8::FindSwappedCommand(input, { { "jmp", "nop" }, { "nop", "jmp" } });
+    //std::cout << r << std::endl;
 
 
     //Day 7 //

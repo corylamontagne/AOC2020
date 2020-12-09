@@ -32,6 +32,13 @@ export namespace AOC
         return input;
     }
 
+    std::vector<long long> ConvertInputToLongs(const std::vector<std::string>& input)
+    {
+        std::vector<long long> result;
+        std::transform(input.begin(), input.end(), std::back_inserter(result), [](const std::string& s) { return std::stoll(s); });
+        return result;
+    }
+
     std::string ReplicateString(std::string s,  unsigned int n) {
         std::ostringstream os;
         for (unsigned int i = 0; i < n; i++)
@@ -39,7 +46,7 @@ export namespace AOC
         return os.str();
     }
 
-    std::map<int, std::vector<std::string>> GroupParsedFileByTokens(std::vector<std::string> parsedFile, std::vector<char> tokens, bool tokenizeEmptyLines)
+    std::map<int, std::vector<std::string>> GroupParsedFileByTokens(const std::vector<std::string>& parsedFile, const std::vector<char>& tokens, bool tokenizeEmptyLines)
     {
         std::map<int, std::vector<std::string>> output;
 
