@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="AOCUtil.ixx" />
     <ClCompile Include="Day1.ixx" />
+    <ClCompile Include="Day10.ixx" />
     <ClCompile Include="Day2.ixx" />
     <ClCompile Include="Day3.ixx" />
     <ClCompile Include="Day4.ixx" />

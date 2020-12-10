@@ -20,7 +20,7 @@ namespace Day9
         return primed;
     }
 
-    export long long FindFirstFailedPreambles(const LongLongVec& input, int preamble)
+    export long long FindFirstFailedPreamble(const LongLongVec& input, int preamble)
     {
         long long result = -1;
 

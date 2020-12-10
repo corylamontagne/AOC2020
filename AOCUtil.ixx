@@ -39,6 +39,13 @@ export namespace AOC
         return result;
     }
 
+    std::vector<int> ConvertInputToIntegers(const std::vector<std::string>& input)
+    {
+        std::vector<int> result;
+        std::transform(input.begin(), input.end(), std::back_inserter(result), [](const std::string& s) { return std::stoi(s); });
+        return result;
+    }
+
     std::string ReplicateString(std::string s,  unsigned int n) {
         std::ostringstream os;
         for (unsigned int i = 0; i < n; i++)

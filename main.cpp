@@ -10,21 +10,31 @@ import Day6;
 import Day7;
 import Day8;
 import Day9;
+import Day10;
 
 int main()
 {
     //Start Timer Code
     auto startTime = std::chrono::high_resolution_clock::now();
 
-    //Day 9 //
-    Day9::LongLongVec input = AOC::ConvertInputToLongs(AOC::ParseFileByLine("Input/P9-input.txt"));
+    //Day 10 //
+    Day10::IntegerVec input = AOC::ConvertInputToIntegers(AOC::ParseFileByLine("Input/P10-input.txt"));
 
-    long long invalidPreamble = Day9::FindFirstFailedPreambles(input, 25);
     //Problem 1
-    std::cout << invalidPreamble << std::endl;
+    std::cout << Day10::GetProductOfJoltageDifferences(input, 0, { 1, 3 }, 3) << std::endl;
 
-    //Problem 2
-    std::cout << Day9::FindEncryptionWeakness(input, invalidPreamble) << std::endl;
+    //Problem 1
+    std::cout << Day10::GetUniqueCombinationsOfAdapters(input, 3, 0) << std::endl;
+
+    //Day 9 //
+    //Day9::LongLongVec input = AOC::ConvertInputToLongs(AOC::ParseFileByLine("Input/P9-input.txt"));
+
+    //long long invalidPreamble = Day9::FindFirstFailedPreamble(input, 25);
+    ////Problem 1
+    //std::cout << invalidPreamble << std::endl;
+
+    ////Problem 2
+    //std::cout << Day9::FindEncryptionWeakness(input, invalidPreamble) << std::endl;
 
     //Day 8 //
     //std::vector<Day8::CommandValue> input = AOC::SplitInputIntoPairs(AOC::ParseFileByLine("Input/P8-input.txt"));
