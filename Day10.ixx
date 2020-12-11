@@ -31,7 +31,7 @@ namespace Day10
         return result;
     }
 
-    //this is inefficient and there is proabbly a way to use std::transforms and reduce etc
+    //this is inefficient and there is probably a way to use std::transforms and reduce etc
     export long long GetUniqueCombinationsOfAdapters(IntegerVec input, int maxJoltDifference, int outletJoltage)
     {
         long long result = -1;

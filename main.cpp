@@ -11,20 +11,30 @@ import Day7;
 import Day8;
 import Day9;
 import Day10;
+import Day11;
 
 int main()
 {
     //Start Timer Code
     auto startTime = std::chrono::high_resolution_clock::now();
 
+    //Day 11 //
+    std::vector<std::string> input = AOC::ParseFileByLine("Input/P11-input.txt");
+
+    //Problem 1
+    std::cout << Day11::CalculateOccupiedSeats(input, 4, 8) << std::endl;
+
+    //Problem 2
+    std::cout << Day11::CalculateOccupiedSeats(input, 5, 8, true) << std::endl;
+
     //Day 10 //
-    Day10::IntegerVec input = AOC::ConvertInputToIntegers(AOC::ParseFileByLine("Input/P10-input.txt"));
+    //Day10::IntegerVec input = AOC::ConvertInputToIntegers(AOC::ParseFileByLine("Input/P10-input.txt"));
 
-    //Problem 1
-    std::cout << Day10::GetProductOfJoltageDifferences(input, 0, { 1, 3 }, 3) << std::endl;
+    ////Problem 1
+    //std::cout << Day10::GetProductOfJoltageDifferences(input, 0, { 1, 3 }, 3) << std::endl;
 
-    //Problem 1
-    std::cout << Day10::GetUniqueCombinationsOfAdapters(input, 3, 0) << std::endl;
+    ////Problem 1
+    //std::cout << Day10::GetUniqueCombinationsOfAdapters(input, 3, 0) << std::endl;
 
     //Day 9 //
     //Day9::LongLongVec input = AOC::ConvertInputToLongs(AOC::ParseFileByLine("Input/P9-input.txt"));
