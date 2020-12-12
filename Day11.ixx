@@ -168,5 +168,139 @@ namespace Day11
 
         return result;
     }
+
+
+
+
+    //This version cuts time in half but I never short circuit the looping logic.
+    //It is also currently harder to read
+    export typedef std::bitset<2> TwoBits;
+    export typedef std::bitset<4> FourBits;
+    export typedef std::vector<std::vector<FourBits>> BitSetMap;
+    export BitSetMap ConvertInputToGameBoard(std::vector<std::string> input, std::map<char, TwoBits> mapping)
+    {
+        BitSetMap map;
+
+        for (auto i : input)
+        {
+            std::vector<FourBits> line;
+            for (auto j : i)
+            {
+                line.push_back(FourBits(mapping[j].to_ulong()));
+            }
+            map.push_back(line);
+        }
+
+        return map;
+    }
+
+    void CloneBits(std::vector<FourBits>& bitList, bool left = true)
+    {
+        std::for_each(bitList.begin(), bitList.end(), [left](FourBits& s) 
+        {  
+            if (left) { s.set(3, s.test(1)); s.set(2, s.test(0)); }
+            else      { s.set(1, s.test(3)); s.set(0, s.test(2)); }
+        });
+    }
+
+    int CountBits(std::vector<FourBits> input, FourBits val, FourBits mask)
+    {
+        int result = 0;
+        for (auto i : input)
+        {
+            result += ((i & mask) == (val << 2));
+        }
+        return result;
+    }
+
+    FourBits GetSeatState_v2(std::tuple<int, int> seatIndex, const BitSetMap& input)
+    {
+        FourBits result(0);
+
+        auto [row, col] = seatIndex;
+
+        if (row >= 0 && row < (int)input.size())
+        {
+            if (col >= 0 && col < (int)input[row].size())
+            {
+                result = input[row][col];
+            }
+        }
+
+        return result;
+    }
+
+    int GetNumberOfAdjacent_v2(std::tuple<int, int> seatIndex, TwoBits seatState, const BitSetMap& input, FourBits mask)
+    {
+        int result = 0;
+
+        auto [row, col] = seatIndex;
+
+        for (int i = row - 1; i <= row + 1 && i < (int)input.size(); ++i)
+        {
+            if (i < 0) continue;
+            for (int j = col - 1; j <= col + 1 && j < (int)input[i].size(); ++j)
+            {
+                if (j < 0) continue;
+                if (std::tuple<int, int>{ i, j } != seatIndex)
+                {
+                    FourBits state = GetSeatState_v2({ i, j }, input) & mask;
+                    FourBits test(seatState.to_ulong() << 2);
+                    result += (state == test);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    export int CalculateOccupiedSeats_v2(BitSetMap bitMap, int numberOfAdjacentToEmpty, bool getFirstInSight = false)
+    {
+        int result = 0;
+
+        bool seatsChanged = true;
+        bool checkEmpty = true;
+        static FourBits highMask(12);
+        static FourBits lowMask(3);
+        while (seatsChanged)
+        {
+            std::for_each(bitMap.begin(), bitMap.end(), [=](std::vector<FourBits>& s) {  CloneBits(s); });
+            seatsChanged = false;
+            for (int i = 0; i < (int)bitMap.size(); ++i)
+            {
+                for (int j = 0; j < (int)bitMap[i].size(); ++j)
+                {
+                    int numSeats = GetNumberOfAdjacent_v2({ i, j }, TwoBits(1), bitMap, highMask);
+                    if (checkEmpty)
+                    {
+                        if (numSeats == 0 && 
+                            ((bitMap[i][j] & highMask) == (FourBits(TwoBits(2).to_ulong()) << 2)))
+                        {
+                            //set to 1
+                            bitMap[i][j].set(0, 1);
+                            bitMap[i][j].set(1, 0);
+                            seatsChanged = true;
+                        }
+                    }
+                    else
+                    {
+                        if (numSeats >= numberOfAdjacentToEmpty && 
+                            ((bitMap[i][j] & lowMask) == (FourBits(TwoBits(1).to_ulong()))))
+                        {
+                            //set to 2
+                            bitMap[i][j].set(0, 0);
+                            bitMap[i][j].set(1, 1);
+                            seatsChanged = true;
+                        }
+                    }
+                }
+            }
+            checkEmpty = !checkEmpty;
+        }
+
+        std::for_each(bitMap.begin(), bitMap.end(), [=, &result](std::vector<FourBits> v) { result += CountBits(v, FourBits(1), highMask); });
+
+        return result;
+    }
 }
 //</shame>

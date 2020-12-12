@@ -21,11 +21,17 @@ int main()
     //Day 11 //
     std::vector<std::string> input = AOC::ParseFileByLine("Input/P11-input.txt");
 
+    std::map<char, Day11::TwoBits> mapping = { { '.', Day11::TwoBits(0) }, { '#', Day11::TwoBits(1) }, { 'L', Day11::TwoBits(2) } };
+
     //Problem 1
-    std::cout << Day11::CalculateOccupiedSeats(input, 4, 8) << std::endl;
+    //std::cout << Day11::CalculateOccupiedSeats(input, 4, 8) << std::endl;
+    //Problem 1.2
+    Day11::BitSetMap inputMap = Day11::ConvertInputToGameBoard(input, mapping); 
+
+    std::cout << Day11::CalculateOccupiedSeats_v2(inputMap, 4) << std::endl;
 
     //Problem 2
-    std::cout << Day11::CalculateOccupiedSeats(input, 5, 8, true) << std::endl;
+    //std::cout << Day11::CalculateOccupiedSeats(input, 5, 8, true) << std::endl;
 
     //Day 10 //
     //Day10::IntegerVec input = AOC::ConvertInputToIntegers(AOC::ParseFileByLine("Input/P10-input.txt"));
