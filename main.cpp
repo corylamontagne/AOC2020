@@ -12,23 +12,36 @@ import Day8;
 import Day9;
 import Day10;
 import Day11;
+import Day12;
 
 int main()
 {
     //Start Timer Code
     auto startTime = std::chrono::high_resolution_clock::now();
 
-    //Day 11 //
-    std::vector<std::string> input = AOC::ParseFileByLine("Input/P11-input.txt");
+    //Day 12
+    std::vector<std::string> input = AOC::ParseFileByLine("Input/P12-input.txt");
 
-    std::map<char, Day11::TwoBits> mapping = { { '.', Day11::TwoBits(0) }, { '#', Day11::TwoBits(1) }, { 'L', Day11::TwoBits(2) } };
+    Day12::CommandValueMap data = Day12::ConvertToCVM(input);
 
     //Problem 1
-    //std::cout << Day11::CalculateOccupiedSeats(input, 4, 8) << std::endl;
-    //Problem 1.2
-    Day11::BitSetMap inputMap = Day11::ConvertInputToGameBoard(input, mapping); 
+    std::cout << Day12::GetDistance(data, 'E') << std::endl;
 
-    std::cout << Day11::CalculateOccupiedSeats_v2(inputMap, 4) << std::endl;
+    //Problem 2
+    std::cout << Day12::GetDistanceToWaypoint(data, Day12::Vec2D(1, 10)) << std::endl;
+
+
+    //Day 11 //
+    //std::vector<std::string> input = AOC::ParseFileByLine("Input/P11-input.txt");
+
+    //std::map<char, Day11::TwoBits> mapping = { { '.', Day11::TwoBits(0) }, { '#', Day11::TwoBits(1) }, { 'L', Day11::TwoBits(2) } };
+
+    ////Problem 1
+    ////std::cout << Day11::CalculateOccupiedSeats(input, 4, 8) << std::endl;
+    ////Problem 1.2
+    //Day11::BitSetMap inputMap = Day11::ConvertInputToGameBoard(input, mapping); 
+
+    //std::cout << Day11::CalculateOccupiedSeats_v2(inputMap, 4) << std::endl;
 
     //Problem 2
     //std::cout << Day11::CalculateOccupiedSeats(input, 5, 8, true) << std::endl;
