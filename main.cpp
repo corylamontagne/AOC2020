@@ -13,23 +13,46 @@ import Day9;
 import Day10;
 import Day11;
 import Day12;
+import Day13;
+import Day14;
 
 int main()
 {
     //Start Timer Code
     auto startTime = std::chrono::high_resolution_clock::now();
 
-    //Day 12
-    std::vector<std::string> input = AOC::ParseFileByLine("Input/P12-input.txt");
-
-    Day12::CommandValueMap data = Day12::ConvertToCVM(input);
+    //Dqy 14 //
+    std::vector<std::string> input = AOC::ParseFileByLine("Input/P14-input.txt");
+    std::map<int, std::vector<std::string>> data = AOC::GroupParsedFileWord(input, {}, { "mask", false });
 
     //Problem 1
-    std::cout << Day12::GetDistance(data, 'E') << std::endl;
+    std::cout << Day14::GetMemorySum(data) << std::endl;
 
     //Problem 2
-    std::cout << Day12::GetDistanceToWaypoint(data, Day12::Vec2D(1, 10)) << std::endl;
+    std::cout << Day14::GetFloatingMemory(data) << std::endl;
 
+    //Day 13 //
+    //std::vector<std::string> input = AOC::ParseFileByLine("Input/P13-input.txt");
+
+    //auto [arrival, departures] = Day13::ParseBusData(input, ',', 'x');
+
+    //////Problem 1
+    //std::cout << Day13::GetBus(arrival, departures) << std::endl;
+
+    //auto [_, secondDepartures] = Day13::ParseBusData(input, ',', 'x', false);
+    //////Problem 2
+    //std::cout << Day13::GetBus_v2(secondDepartures) << std::endl;
+
+    //Day 12 //
+    //std::vector<std::string> input = AOC::ParseFileByLine("Input/P12-input.txt");
+
+    //Day12::CommandValueMap data = Day12::ConvertToCVM(input);
+
+    ////Problem 1
+    //std::cout << Day12::GetDistance(data, 'E') << std::endl;
+
+    ////Problem 2
+    //std::cout << Day12::GetDistanceToWaypoint(data, Day12::Vec2D(1, 10)) << std::endl;
 
     //Day 11 //
     //std::vector<std::string> input = AOC::ParseFileByLine("Input/P11-input.txt");

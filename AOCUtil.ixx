@@ -72,6 +72,25 @@ export namespace AOC
         return output;
     }
 
+    std::map<int, std::vector<std::string>> GroupParsedFileWord(const std::vector<std::string>& parsedFile, const std::vector<char>& tokens, std::tuple<std::string, bool> group)
+    {
+        std::map<int, std::vector<std::string>> output;
+
+        unsigned int i = 0;
+        for (auto line : parsedFile)
+        {
+            auto [groupString, skip] = group;
+            if (line.find(groupString) != std::string::npos)
+            {
+                i++;
+                if (skip) continue;
+            }
+            output[i].push_back(line);
+        }
+
+        return output;
+    }
+
     std::map<int, std::unordered_set<char>> GetUniqueDataFromLists(std::map<int, std::vector<std::string>> input)
     {
         std::map<int, std::unordered_set<char>> uniqueData;
@@ -98,5 +117,19 @@ export namespace AOC
         }
 
         return returnData;
+    }
+
+    export void GenerateAllBinaryPermutations(std::string bitsSring, std::set<std::string>& binaryStrings, int index = 0)
+    {
+        if (index == bitsSring.length()) { return; }
+
+
+        bitsSring[index] = '0';
+        GenerateAllBinaryPermutations(bitsSring, binaryStrings, index + 1);
+
+        bitsSring[index] = '1';
+        GenerateAllBinaryPermutations(bitsSring, binaryStrings, index + 1);
+
+        binaryStrings.insert(bitsSring);
     }
 }
