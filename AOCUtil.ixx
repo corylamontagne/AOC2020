@@ -32,7 +32,24 @@ export namespace AOC
         return input;
     }
 
-    std::vector<long long> ConvertInputToLongs(const std::vector<std::string>& input)
+    std::vector<long long> ConvertCommaSeparatedStringToLongs(std::string input)
+    {
+        std::vector<long long> result;
+        std::for_each(input.begin(), input.end(), [&input](char &c) {if (c == ',') c = ' '; });
+
+        std::stringstream ss(input);
+        while (1) {
+            long n;
+            ss >> n;
+            if (!ss)
+                break;
+            result.push_back(n);
+        }
+
+        return result;
+    }
+
+    std::vector<long long> ConvertInputToLongs(std::vector<std::string> input)
     {
         std::vector<long long> result;
         std::transform(input.begin(), input.end(), std::back_inserter(result), [](const std::string& s) { return std::stoll(s); });

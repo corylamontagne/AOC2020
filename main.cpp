@@ -15,21 +15,32 @@ import Day11;
 import Day12;
 import Day13;
 import Day14;
+import Day15;
 
 int main()
 {
     //Start Timer Code
     auto startTime = std::chrono::high_resolution_clock::now();
 
-    //Dqy 14 //
-    std::vector<std::string> input = AOC::ParseFileByLine("Input/P14-input.txt");
-    std::map<int, std::vector<std::string>> data = AOC::GroupParsedFileWord(input, {}, { "mask", false });
+    //Day 15 //
+    std::vector<std::string> input = AOC::ParseFileByLine("Input/P15-input.txt");
+    std::vector<long long> data = AOC::ConvertCommaSeparatedStringToLongs(input[0]);
 
     //Problem 1
-    std::cout << Day14::GetMemorySum(data) << std::endl;
+    std::cout << Day15::GetNthNumberGame(data, 2020) << std::endl;
 
     //Problem 2
-    std::cout << Day14::GetFloatingMemory(data) << std::endl;
+    std::cout << Day15::GetNthNumberGame_v2(data, 30000000) << std::endl;
+
+    //Dqy 14 //
+    //std::vector<std::string> input = AOC::ParseFileByLine("Input/P14-input.txt");
+    //std::map<int, std::vector<std::string>> data = AOC::GroupParsedFileWord(input, {}, { "mask", false });
+
+    ////Problem 1
+    //std::cout << Day14::GetMemorySum(data) << std::endl;
+
+    ////Problem 2
+    //std::cout << Day14::GetFloatingMemory(data) << std::endl;
 
     //Day 13 //
     //std::vector<std::string> input = AOC::ParseFileByLine("Input/P13-input.txt");

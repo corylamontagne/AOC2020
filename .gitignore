@@ -59,3 +59,10 @@ Debug/.obj.dt.md.json.command
 *.ifc
 *.json
 *.enc
+*.recipe
+*.iobj
+*.ipdb
+*.log
+*.pdb
+Release/AOC2020.vcxproj.FileListAbsolute.txt
+*.ipch
