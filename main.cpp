@@ -16,21 +16,43 @@ import Day12;
 import Day13;
 import Day14;
 import Day15;
+import Day16;
 
 int main()
 {
     //Start Timer Code
     auto startTime = std::chrono::high_resolution_clock::now();
 
-    //Day 15 //
-    std::vector<std::string> input = AOC::ParseFileByLine("Input/P15-input.txt");
-    std::vector<long long> data = AOC::ConvertCommaSeparatedStringToLongs(input[0]);
+    //Day 16 //
+    std::vector<std::string> input = AOC::ParseFileByLine("Input/P16-input.txt");
+    Day16::TicketDataMap map;
+
+    Day16::TicketInfo passengerTicket;
+    std::vector<Day16::TicketInfo> nearbyTickets;
+    std::vector<int> invalidTicketIndices;
+
+    Day16::PopulateTicketDataInfo(input, map, passengerTicket, nearbyTickets);
 
     //Problem 1
-    std::cout << Day15::GetNthNumberGame(data, 2020) << std::endl;
+    std::cout << Day16::GetInvalidFields(nearbyTickets, map, invalidTicketIndices) << std::endl;
+
+    for (int i = invalidTicketIndices.size() - 1; i >= 0; --i)
+    {
+        nearbyTickets.erase(nearbyTickets.begin() + invalidTicketIndices[i]);
+    }
 
     //Problem 2
-    std::cout << Day15::GetNthNumberGame_v2(data, 30000000) << std::endl;
+    std::cout << Day16::DetermineValidFields(passengerTicket, nearbyTickets, map) << std::endl;
+
+    //Day 15 //
+    //std::vector<std::string> input = AOC::ParseFileByLine("Input/P15-input.txt");
+    //std::vector<long long> data = AOC::ConvertCommaSeparatedStringToLongs(input[0]);
+
+    ////Problem 1
+    //std::cout << Day15::GetNthNumberGame(data, 2020) << std::endl;
+
+    ////Problem 2
+    //std::cout << Day15::GetNthNumberGame_v2(data, 30000000) << std::endl;
 
     //Dqy 14 //
     //std::vector<std::string> input = AOC::ParseFileByLine("Input/P14-input.txt");

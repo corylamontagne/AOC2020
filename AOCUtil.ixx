@@ -49,6 +49,23 @@ export namespace AOC
         return result;
     }
 
+    std::vector<int> ConvertCommaSeparatedStringToInts(std::string input)
+    {
+        std::vector<int> result;
+        std::for_each(input.begin(), input.end(), [&input](char& c) {if (c == ',') c = ' '; });
+
+        std::stringstream ss(input);
+        while (1) {
+            int n;
+            ss >> n;
+            if (!ss)
+                break;
+            result.push_back(n);
+        }
+
+        return result;
+    }
+
     std::vector<long long> ConvertInputToLongs(std::vector<std::string> input)
     {
         std::vector<long long> result;

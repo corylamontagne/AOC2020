@@ -24,6 +24,7 @@ namespace Day15
         return result.back();
     }
 
+    //tried a custom struct to stop doing a find and use a default value instead.
     struct DL
     {
         long long v = -1;
