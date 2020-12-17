@@ -106,9 +106,9 @@ namespace Day16
         {
             for (int j = 0; j < (int)passenger.size(); ++j)
             {
-                auto& pow = ranges[j];
+                TicketDataMap& currentRange = ranges[j];
                 std::vector<std::string> remove;
-                for (auto tm : ranges[j])
+                for (auto tm : currentRange)
                 {
                     auto [k, v] = tm;
                     if (!IsFieldInRange(passenger[j], { v[0], v[1] }, { v[2], v[3] }))
@@ -118,7 +118,7 @@ namespace Day16
                 }
                 for (auto s : remove)
                 {
-                    pow.erase(pow.find(s));
+                    currentRange.erase(currentRange.find(s));
                 }
             }
         }
