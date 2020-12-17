@@ -121,20 +121,6 @@ namespace Day16
                     pow.erase(pow.find(s));
                 }
             }
-
-            bool done = true;
-            for (auto tm : ranges)
-            {
-                if (tm.second.size() != 1)
-                {
-                    done = false;
-                    break;
-                }
-            }
-            if (done)
-            {
-                break;
-            }
         }
 
         std::set<std::string> check;
