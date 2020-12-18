@@ -17,32 +17,65 @@ import Day13;
 import Day14;
 import Day15;
 import Day16;
+import Day17;
+import Day18;
 
 int main()
 {
     //Start Timer Code
     auto startTime = std::chrono::high_resolution_clock::now();
 
-    //Day 16 //
-    std::vector<std::string> input = AOC::ParseFileByLine("Input/P16-input.txt");
-    Day16::TicketDataMap map;
+    //Day 18
+    std::vector<std::string> input = AOC::ParseFileByLine("Input/P18-input.txt");
+    Day18::OperatorMap ops = { {"+",[=](long long a, long long b) {return a + b; } }, {"*",[=](long long a, long long b) {return a * b; } } };
 
-    Day16::TicketInfo passengerTicket;
-    std::vector<Day16::TicketInfo> nearbyTickets;
-    std::vector<int> invalidTicketIndices;
+    //Problem 1 setup
+    //Day18::PrecedenceMap precMap = { {"+", 1}, {"*", 1} };
+    //Problem 2 setup
+    Day18::PrecedenceMap precMap = { {"+", 2}, {"*", 1} };
 
-    Day16::PopulateTicketDataInfo(input, map, passengerTicket, nearbyTickets);
-
-    //Problem 1
-    std::cout << Day16::GetInvalidFields(nearbyTickets, map, invalidTicketIndices) << std::endl;
-
-    for (int i = invalidTicketIndices.size() - 1; i >= 0; --i)
+    long long sum = 0;
+    
+    for (auto i : input)
     {
-        nearbyTickets.erase(nearbyTickets.begin() + invalidTicketIndices[i]);
+        sum += Day18::Calculate(i, ops, precMap);
     }
 
+    std::cout << sum << std::endl;
+
+    //Day 17
+    //std::vector<std::string> input = AOC::ParseFileByLine("Input/P17-input.txt");
+    //std::map<char, Day17::TwoBits> mapping = { { '.', Day17::TwoBits(0) }, { '#', Day17::TwoBits(1) }};
+
+    //Day17::BitSetHyperCube conwayCube = Day17::ConvertInputPowerSource(input, mapping);
+    ////Day17::PrintBoard(conwayCube);
+
+    //std::cout << std::endl << std::endl;
+    ////Problem 1
+    //std::cout << Day17::GetActiveConwayCubes(conwayCube, { 2, 3 }, { 3, 3 }) << std::endl;
+
     //Problem 2
-    std::cout << Day16::DetermineValidFields(passengerTicket, nearbyTickets, map) << std::endl;
+
+    //Day 16 //
+    //std::vector<std::string> input = AOC::ParseFileByLine("Input/P16-input.txt");
+    //Day16::TicketDataMap map;
+
+    //Day16::TicketInfo passengerTicket;
+    //std::vector<Day16::TicketInfo> nearbyTickets;
+    //std::vector<int> invalidTicketIndices;
+
+    //Day16::PopulateTicketDataInfo(input, map, passengerTicket, nearbyTickets);
+
+    ////Problem 1
+    //std::cout << Day16::GetInvalidFields(nearbyTickets, map, invalidTicketIndices) << std::endl;
+
+    //for (int i = invalidTicketIndices.size() - 1; i >= 0; --i)
+    //{
+    //    nearbyTickets.erase(nearbyTickets.begin() + invalidTicketIndices[i]);
+    //}
+
+    ////Problem 2
+    //std::cout << Day16::DetermineValidFields(passengerTicket, nearbyTickets, map) << std::endl;
 
     //Day 15 //
     //std::vector<std::string> input = AOC::ParseFileByLine("Input/P15-input.txt");

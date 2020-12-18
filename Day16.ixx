@@ -128,7 +128,7 @@ namespace Day16
         int found = 0;
         while (found < 6)
         {
-            while (size < ticketData.size())
+            while (size < (int)ticketData.size())
             {
                 int i = 0;
                 for (auto tm : ranges)
