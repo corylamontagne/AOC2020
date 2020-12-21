@@ -21,12 +21,6 @@ namespace Day18
         }
     }
 
-    bool isDigit(const std::string& s)
-    {
-        return !s.empty() && std::find_if(s.begin(),
-            s.end(), [](unsigned char c) { return !std::isdigit(c); }) == s.end();
-    }
-
     bool isLeftParenthesis(const std::string& c) { return c == "("; }
     bool isRightParenthesis(const std::string& c) { return c == ")"; }
 
@@ -37,7 +31,7 @@ namespace Day18
 
         while (!exp.empty())
         {
-            if (isDigit(exp.front()) )
+            if (AOC::isDigit(exp.front()) )
             { 
                 digit.push( std::stoll(exp.front())); 
                 exp.pop(); 
@@ -66,7 +60,7 @@ namespace Day18
         std::stack<std::string> operators;
         for (auto i : tokens)
         {
-            if (isDigit(i)) { output.push(i); } //is digit
+            if (AOC::isDigit(i)) { output.push(i); } //is digit
             else if (precMap.find(i) != precMap.end()) //is operator
             {
                 while (!operators.empty() &&

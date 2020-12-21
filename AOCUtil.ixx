@@ -178,10 +178,25 @@ export namespace AOC
         }
     }
 
-    export std::vector<std::string> split(const std::string& input, char delim) 
+    export std::vector<std::string> split(const std::string& input, char delim, bool removeWhitespace = false)
     {
         std::vector<std::string> elems;
         split(input, delim, std::back_inserter(elems));
+
+        if (removeWhitespace)
+        {
+            for (auto &i : elems)
+            {
+                i.erase(remove_if(i.begin(), i.end(), isspace), i.end());
+            }
+        }
+
         return elems;
+    }
+
+    export bool isDigit(const std::string& s)
+    {
+        return !s.empty() && std::find_if(s.begin(),
+            s.end(), [](unsigned char c) { return !std::isdigit(c); }) == s.end();
     }
 }

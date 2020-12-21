@@ -19,29 +19,41 @@ import Day15;
 import Day16;
 import Day17;
 import Day18;
+import Day19;
 
 int main()
 {
     //Start Timer Code
     auto startTime = std::chrono::high_resolution_clock::now();
 
+    //Day 19
+    std::vector<std::string> input = AOC::ParseFileByLine("Input/P19-input.txt");
+
+    auto result = std::find(input.begin(), input.end(), "");
+    std::vector < std::string> rules(input.begin(), result);
+
+    auto [ruleMap, baseRuleMap] = Day19::BuildRuleMap(rules);
+
+    std::vector < std::string> data(result + 1, input.end());
+
+    std::cout << Day19::CountValidRules(data, ruleMap, baseRuleMap);
     //Day 18
-    std::vector<std::string> input = AOC::ParseFileByLine("Input/P18-input.txt");
-    Day18::OperatorMap ops = { {"+",[=](long long a, long long b) {return a + b; } }, {"*",[=](long long a, long long b) {return a * b; } } };
+    //std::vector<std::string> input = AOC::ParseFileByLine("Input/P18-input.txt");
+    //Day18::OperatorMap ops = { {"+",[=](long long a, long long b) {return a + b; } }, {"*",[=](long long a, long long b) {return a * b; } } };
 
-    //Problem 1 setup
-    //Day18::PrecedenceMap precMap = { {"+", 1}, {"*", 1} };
-    //Problem 2 setup
-    Day18::PrecedenceMap precMap = { {"+", 2}, {"*", 1} };
+    ////Problem 1 setup
+    ////Day18::PrecedenceMap precMap = { {"+", 1}, {"*", 1} };
+    ////Problem 2 setup
+    //Day18::PrecedenceMap precMap = { {"+", 2}, {"*", 1} };
 
-    long long sum = 0;
-    
-    for (auto i : input)
-    {
-        sum += Day18::Calculate(i, ops, precMap);
-    }
+    //long long sum = 0;
+    //
+    //for (auto i : input)
+    //{
+    //    sum += Day18::Calculate(i, ops, precMap);
+    //}
 
-    std::cout << sum << std::endl;
+    //std::cout << sum << std::endl;
 
     //Day 17
     //std::vector<std::string> input = AOC::ParseFileByLine("Input/P17-input.txt");
